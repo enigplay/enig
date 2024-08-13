@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 The Raptoreum developer
+ * Copyright (c) 2020 The Enig developer
  * Distributed under the MIT software license, see the accompanying
  * file COPYING or http://www.opensource.org/licenses/mit-license.php.
  * 
@@ -18,7 +18,7 @@
 #include <limits.h>
 using namespace std;
 
-static const string DEFAULT_FOUNDER_ADDRESS = "RTtyQU6DoSuNWetT4WUem5qXP5jNYGpwat";
+static const string DEFAULT_FOUNDER_ADDRESS = "EV2hDqRY3uYiyEGwsvkFiC5EZ2PiSyG1FA";
 struct FounderRewardStructure {
 	int blockHeight;
 	int rewardPercentage;

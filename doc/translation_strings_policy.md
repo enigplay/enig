@@ -1,7 +1,7 @@
 Translation Strings Policy
 ===========================
 
-This document provides guidelines for internationalization of the Raptoreum Core software.
+This document provides guidelines for internationalization of the Enig Core software.
 
 How to translate?
 ------------------
@@ -75,10 +75,10 @@ In Qt code use tr's third argument for optional plurality. For example:
 This adds `<numerusform>`s to the respective `.ts` file, which can be translated separately depending on the language. In English, this is simply:
 
     <message numerus="yes">
-        <source>%n active connection(s) to Raptoreum network</source>
+        <source>%n active connection(s) to Enig network</source>
         <translation>
-            <numerusform>%n active connection to Raptoreum network</numerusform>
-            <numerusform>%n active connections to Raptoreum network</numerusform>
+            <numerusform>%n active connection to Enig network</numerusform>
+            <numerusform>%n active connections to Enig network</numerusform>
         </translation>
     </message>
 
@@ -96,4 +96,4 @@ The second example reduces the number of pluralized words that translators have 
 
 During a string freeze (often before a major release), no translation strings are to be added, modified or removed.
 
-This can be checked by executing `make translate` in the `src` directory, then verifying that `raptoreum_en.ts` remains unchanged.
+This can be checked by executing `make translate` in the `src` directory, then verifying that `enig_en.ts` remains unchanged.

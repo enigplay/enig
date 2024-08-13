@@ -1,9 +1,9 @@
-// Copyright (c) 2021 The Raptoreum Core developers
+// Copyright (c) 2021 The Enig Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAPTOREUM_INDEX_H
-#define RAPTOREUM_INDEX_H
+#ifndef ENIG_INDEX_H
+#define ENIG_INDEX_H
 
 #include <amount.h>
 #include <script/script.h>

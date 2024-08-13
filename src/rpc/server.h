@@ -136,7 +136,7 @@ public:
 };
 
 /**
- * Raptoreum RPC command dispatcher.
+ * Enig RPC command dispatcher.
  */
 class CRPCTable
 {

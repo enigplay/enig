@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2021 The Dash Core developers
-// Copyright (c) 2020-2022 The Raptoreum developers
+// Copyright (c) 2020-2022 The Enig developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -53,13 +53,13 @@ void smartnode_list_help()
             "  json           - Print info in JSON format (can be additionally filtered, partial match)\n"
             "  lastpaidblock  - Print the last block height a node was paid on the network\n"
             "  lastpaidtime   - Print the last time a node was paid on the network\n"
-            "  owneraddress   - Print the smartnode owner Raptoreum address\n"
-            "  payee          - Print the smartnode payout Raptoreum address (can be additionally filtered,\n"
+            "  owneraddress   - Print the smartnode owner Enig address\n"
+            "  payee          - Print the smartnode payout Enig address (can be additionally filtered,\n"
             "                   partial match)\n"
             "  pubKeyOperator - Print the smartnode operator public key\n"
             "  status         - Print smartnode status: ENABLED / POSE_BANNED\n"
             "                   (can be additionally filtered, partial match)\n"
-            "  votingaddress  - Print the smartnode voting Raptoreum address\n"
+            "  votingaddress  - Print the smartnode voting Enig address\n"
         );
 }
 
@@ -706,8 +706,8 @@ UniValue smartnodelist(const JSONRPCRequest& request)
 static const CRPCCommand commands[] =
 { //  category              name                      actor (function)         argNames
   //  --------------------- ------------------------  -----------------------  ----------
-    { "raptoreum",               "smartnode",             &smartnode,             {} },
-    { "raptoreum",               "smartnodelist",         &smartnodelist,         {} },
+    { "enig",               "smartnode",             &smartnode,             {} },
+    { "enig",               "smartnodelist",         &smartnodelist,         {} },
 };
 
 void RegisterSmartnodeRPCCommands(CRPCTable &t)

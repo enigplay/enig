@@ -34,7 +34,7 @@ namespace interfaces {
 class Handler;
 class Wallet;
 
-//! Interface for the src/evo part of a raptoreum node (raptoreumd process).
+//! Interface for the src/evo part of a enig node (enigd process).
 class EVO
 {
 public:
@@ -42,7 +42,7 @@ public:
     virtual CDeterministicMNList getListAtChainTip() = 0;
 };
 
-//! Interface for the src/llmq part of a raptoreum node (raptoreumd process).
+//! Interface for the src/llmq part of a enig node (enigd process).
 class LLMQ
 {
 public:
@@ -50,7 +50,7 @@ public:
     virtual size_t getInstantSentLockCount() = 0;
 };
 
-//! Interface for the src/masternode part of a raptoreum node (raptoreumd process).
+//! Interface for the src/masternode part of a enig node (enigd process).
 namespace Smartnode
 {
 class Sync
@@ -88,7 +88,7 @@ public:
 };
 }
 
-//! Top-level interface for a raptoreum node (raptoreumd process).
+//! Top-level interface for a enig node (enigd process).
 class Node
 {
 public:

@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: raptoreumd.service
-Upstart: raptoreumd.conf
-OpenRC:  raptoreumd.openrc
-         raptoreumd.openrcconf
-CentOS:  raptoreumd.init
-OS X:    org.raptoreum.raptoreumd.plist
+SystemD: enigd.service
+Upstart: enigd.conf
+OpenRC:  enigd.openrc
+         enigd.openrcconf
+CentOS:  enigd.init
+OS X:    org.enig.enigd.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

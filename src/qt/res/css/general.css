@@ -901,8 +901,8 @@ QToolBar > QToolButton:disabled {
 
 QToolBar QLabel#lblToolbarLogo {
     padding: 12px;
-    image: url(':/images/raptoreum_logo_toolbar');
-    height: 2.5em;
+    image: url(':/images/enig_logo_toolbar');
+    height: 5.5em;
 }
 
 /******************************************************

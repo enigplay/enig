@@ -14,7 +14,7 @@
 #include <util.h>
 #include <validation.h>
 
-#include <test/test_raptoreum.h>
+#include <test/test_enig.h>
 
 #include <stdint.h>
 

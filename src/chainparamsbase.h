@@ -10,8 +10,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between raptoreum-cli and raptoreumd)
- * of a given instance of the Raptoreum system.
+ * CBaseChainParams defines the base parameters (shared between enig-cli and enigd)
+ * of a given instance of the Enig system.
  */
 class CBaseChainParams
 {

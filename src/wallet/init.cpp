@@ -52,7 +52,7 @@ public:
     //! Close all wallets.
     void Close() const override;
 
-    // Raptoreum Specific Wallet Init
+    // Enig Specific Wallet Init
     void AutoLockSmartnodeCollaterals() const override;
     void InitCoinJoinSettings() const override;
     void InitKeePass() const override;

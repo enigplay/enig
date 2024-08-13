@@ -1,11 +1,11 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2021 The Dash Core developers
-// Copyright (c) 2020-2022 The Raptoreum developers
+// Copyright (c) 2020-2022 The Enig developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/raptoreum-config.h>
+#include <config/enig-config.h>
 #endif
 
 #include <qt/rpcconsole.h>
@@ -1297,7 +1297,7 @@ void RPCConsole::setButtonIcons()
 void RPCConsole::reloadThemedWidgets()
 {
     clear();
-    ui->promptLabel->setHidden(GUIUtil::raptoreumThemeActive());
+    ui->promptLabel->setHidden(GUIUtil::enigThemeActive());
     // Adjust button icon colors on theme changes
     setButtonIcons();
 }

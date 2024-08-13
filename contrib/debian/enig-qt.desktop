@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Enig Core
+Comment=Enig P2P Cryptocurrency
+Comment[de]=Verbinde mit dem Enig peer-to-peer Netzwerk
+Comment[fr]=Enig, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Enig, eşten eşe kriptografik sanal para birimi
+Exec=enig-qt %u
+Terminal=false
+Type=Application
+Icon=enig128
+MimeType=x-scheme-handler/enig;
+Categories=Office;Finance;

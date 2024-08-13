@@ -38,23 +38,23 @@ Next, follow the instructions in [build-generic](build-generic.md)
 Running
 -------
 
-Raptoreum Core is now available at `./src/raptoreumd`
+Enig Core is now available at `./src/enigd`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=raptoreumrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/RaptoreumCore/raptoreum.conf"
+    echo -e "rpcuser=enigrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/EnigCore/enig.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/RaptoreumCore/raptoreum.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/EnigCore/enig.conf"
 
-The first time you run raptoreumd, it will start downloading the blockchain. This process could take several hours.
+The first time you run enigd, it will start downloading the blockchain. This process could take several hours.
 
 You can monitor the download process by looking at the debug.log file:
 
-    tail -f $HOME/Library/Application\ Support/RaptoreumCore/debug.log
+    tail -f $HOME/Library/Application\ Support/EnigCore/debug.log
 
 Other commands:
 -------
 
-    ./src/raptoreumd -daemon # Starts the raptoreum daemon.
-    ./src/raptoreum-cli --help # Outputs a list of command-line options.
-    ./src/raptoreum-cli help # Outputs a list of RPC commands when the daemon is running.
+    ./src/enigd -daemon # Starts the enig daemon.
+    ./src/enig-cli --help # Outputs a list of command-line options.
+    ./src/enig-cli help # Outputs a list of RPC commands when the daemon is running.

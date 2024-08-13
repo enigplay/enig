@@ -1,10 +1,10 @@
 // Copyright (c) 2018-2019 The Dash Core developers
-// Copyright (c) 2020-2022 The Raptoreum developers
+// Copyright (c) 2020-2022 The Enig developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAPTOREUM_CRYPTO_BLS_H
-#define RAPTOREUM_CRYPTO_BLS_H
+#ifndef ENIG_CRYPTO_BLS_H
+#define ENIG_CRYPTO_BLS_H
 
 #include <hash.h>
 #include <serialize.h>
@@ -449,4 +449,4 @@ typedef std::shared_ptr<BLSSignatureVector> BLSSignatureVectorPtr;
 
 bool BLSInit();
 
-#endif // RAPTOREUM_CRYPTO_BLS_H
+#endif // ENIG_CRYPTO_BLS_H

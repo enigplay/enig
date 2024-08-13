@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2020 The Dash Core developers
-// Copyright (c) 2020-2022 The Raptoreum developers
+// Copyright (c) 2020-2022 The Enig developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -83,8 +83,8 @@ static CBlock CreateDevNetGenesisBlock(const uint256 &prevBlockHash, const std::
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "The Times 22/Jan/2018 Raptoreum is name of the game for new generation of firms";
-    const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
+    const char* pszTimestamp = "The Times 01/Aug/2024 EnigPlay is name of the game for new generation of firms";
+    const CScript genesisOutputScript = CScript() << ParseHex("0446dac1a47f05eb6acb2c3393d68a2a2f050ad92e34f093ecbeb713bcddeb085ef254f4fd92796267476e7e8c1ec9b852ff59e68b199b243252ae8eb9967b7372") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -166,7 +166,6 @@ static CBlock FindDevNetGenesisBlock(const CBlock &prevBlock, const CAmount& rew
     assert(false);
 }
 
-/// Verify the POW hash is valid for the genesis block
 /// If starting Nonce is not valid, search for one
 static void VerifyGenesisPOW(const CBlock& genesis)
 {
@@ -528,8 +527,8 @@ public:
         consensus.DIP0008Enabled = true;
         // consensus.DIP0003EnforcementHeight = 1047200;
         consensus.powLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Raptoreum: 1 day
-        consensus.nPowTargetSpacing = 2 * 60; // Raptoreum: 2 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Enig: 1 day
+        consensus.nPowTargetSpacing = 2 * 60; // Enig: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nPowDGWHeight = 60;
@@ -551,59 +550,60 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_V17].nFalloffCoeff = 5; // this corresponds to 10 periods
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("000000000000000000000000000000000000000000000000000eead474ccbc59"); // block 421457 chainwork
+        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000000000000000800"); // block 0 chainwork
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("ox6fb0b649723f51b67484019409fef94d077f17c8d88645e08c000b2e4fd3e28a"); // block hash for 421457
+        consensus.defaultAssumeValid = uint256S("0xaf62cdf1af603b4e78348f063306ed389d301f9a816875337ce9a9c86c63dd4b"); // block hash for 0
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0x72;//r
-        pchMessageStart[1] = 0x74;//t
-        pchMessageStart[2] = 0x6d;//m
-        pchMessageStart[3] = 0x2e;//.
-        nDefaultPort = 10226;
+        pchMessageStart[0] = 0x72;//E
+        pchMessageStart[1] = 0x74;//N
+        pchMessageStart[2] = 0x6d;//I
+        pchMessageStart[3] = 0x2e;//G
+        nDefaultPort = 18142;
         nPruneAfterHeight = 100000;
-        genesis = CreateGenesisBlock(1614369600, 1130, 0x20001fff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(1722520602, 982, 0x20001fff, 4, 5000 * COIN);
+        
         VerifyGenesisPOW(genesis);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0xb79e5df07278b9567ada8fc655ffbfa9d3f586dc38da3dd93053686f41caeea0"));
-        assert(genesis.hashMerkleRoot == uint256S("0x87a48bc22468acdd72ee540aab7c086a5bbcddc12b51c6ac925717a74c269453"));
+        assert(consensus.hashGenesisBlock == uint256S("0xaf62cdf1af603b4e78348f063306ed389d301f9a816875337ce9a9c86c63dd4b"));
+        assert(genesis.hashMerkleRoot == uint256S("0x7c3f6983bb482a305d69b0add97df290b4fd289a5c7e2004c2ccf2bc72b421fa"));
 
-        vSeeds.emplace_back("lbdn.raptoreum.com");
-        vSeeds.emplace_back("51.89.21.112");
+        vSeeds.emplace_back("evn.enigplay.com");
+        
 
-        // Raptoreum addresses start with 'r'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
-        // Raptoreum script addresses start with '7'
+        // Enig addresses start with 'E'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,33);
+        // Enig script addresses start with '7'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,16);
-        // Raptoreum private keys start with '7' or 'X'
+        // Enig private keys start with '7' or 'X'
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
-        // Raptoreum BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
+        // Enig BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
-        // Raptoreum BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
+        // Enig BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
-        // Raptoreum BIP44 coin type is '5'
+        // Enig BIP44 coin type is '5'
         std::string strExtCoinType = gArgs.GetArg("-extcoinindex", "");
         nExtCoinType = strExtCoinType.empty() ? 200 : std::stoi(strExtCoinType);
 //        if(gArgs.GetChainName() == CBaseChainParams::MAIN) {
 //        	std::cout << "mainnet is disable" << endl;
 //        	exit(0);
 //        }
-        std::vector<FounderRewardStructure> rewardStructures = {  {INT_MAX, 5} };// 5% founder/dev fee forever
-        consensus.nFounderPayment = FounderPayment(rewardStructures, 250);
+        std::vector<FounderRewardStructure> rewardStructures = {  {INT_MAX, 15} };// 5% founder/dev fee forever
+        consensus.nFounderPayment = FounderPayment(rewardStructures, 15);
         consensus.nCollaterals = SmartnodeCollaterals(
-          { {88720, 600000 * COIN},
-            {132720, 800000 * COIN},
-            {176720, 1000000 * COIN},
-            {220720, 1250000 * COIN},
-            {264720, 1500000 * COIN},
-            {INT_MAX, 1800000 * COIN}
+          { {88720, 900000 * COIN},
+            {132720, 1100000 * COIN},
+            {176720, 1350000 * COIN},
+            {220720, 1600000 * COIN},
+            {264720, 1900000 * COIN},
+            {INT_MAX, 2100000 * COIN}
           },
-          { {5761, 0}, {INT_MAX, 20} }
+          { {5761, 0}, {INT_MAX, 55} }
         );
         //FutureRewardShare defaultShare(0.8,0.2,0.0);
         consensus.nFutureRewardShare = Consensus::FutureRewardShare(0.8,0.2,0.0);
@@ -633,22 +633,19 @@ public:
         nPoolNewMaxParticipants = 20;
         nFulfilledRequestExpireTime = 60*60; // fulfilled requests expire in 1 hour
 
-        vSporkAddresses = {"RWGvGpd3yJdnfh9ziyHNDEoHMJBvnZ23zK"};
+        vSporkAddresses = {"EaNLKbVXyepVDXJu1YXn8HFygmJJ46bEiv"};
         nMinSporkKeys = 1;
         fBIP9CheckSmartnodesUpgraded = true;
 
         checkpointData = {
-          {  {5145, uint256S("0x64c9cc82f05f4326e49fd4b21a48494b02b12a707de67a47c7e8e1102b0f1d9b")},
-             {35000, uint256S("0xb4fb191f3ef4141557aef8aafa700d312e5499cbde4a3079faa78cf58c0c414f")},
-             {61900, uint256S("0xc146fc6244fe4d71559f4fef16a386f1fceda6e5efa3da3ca1ebe9806cc8f25c")},
-             {394273, uint256S("0dc274a28864a01a9539e60afdbc38fcdb0f000fbc52553cd31651c97557dc04")}
-
+          {  
+            {0, uint256S("af62cdf1af603b4e78348f063306ed389d301f9a816875337ce9a9c86c63dd4b")},
           }
         };
 
         chainTxData = ChainTxData{
-            1662608883,   // * UNIX timestamp of last known number of transactions (Block 0)
-            2091922,   // * total number of transactions between genesis and that timestamp
+            1722520602,   // * UNIX timestamp of last known number of transactions (Block 0)
+            0,   // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
             0.06    // * estimated number of transactions per second after that timestamp
         };
@@ -687,8 +684,8 @@ public:
         consensus.DIP0008Enabled = true;
         // consensus.DIP0003EnforcementHeight = 7300;
         consensus.powLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Raptoreum: 1 day
-        consensus.nPowTargetSpacing = 60; // Raptoreum: 1 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Enig: 1 day
+        consensus.nPowTargetSpacing = 60; // Enig: 1 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nPowDGWHeight = 60;
@@ -710,44 +707,44 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_V17].nFalloffCoeff = 5; // this corresponds to 10 periods
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0"); // 0
+        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000000000000000800"); // 0
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x0"); // 0
+        consensus.defaultAssumeValid = uint256S("0xfa77c765afa17c13c0382e3311189b6aeb6bc3470ce11cd0f9e6d4a0eed8c9b2"); // 0
 
-        pchMessageStart[0] = 0x74; //t
-        pchMessageStart[1] = 0x72; //r
-        pchMessageStart[2] = 0x74; //t
-        pchMessageStart[3] = 0x6d; //m
-        nDefaultPort = 10229;
+        pchMessageStart[0] = 0x74; //E
+        pchMessageStart[1] = 0x72; //n
+        pchMessageStart[2] = 0x74; //i
+        pchMessageStart[3] = 0x6d; //g
+        nDefaultPort = 18111;
         nPruneAfterHeight = 1000;
-        genesis = CreateGenesisBlock(1668574674, 352, 0x20001fff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(1704129062, 3042, 0x20001fff, 4, 5000 * COIN);
+        
         VerifyGenesisPOW(genesis);
-
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x16b418c4e84599ba61836085c5b780c199f90c207f7de189cbb56803e87529eb"));
-        assert(genesis.hashMerkleRoot == uint256S("0x87a48bc22468acdd72ee540aab7c086a5bbcddc12b51c6ac925717a74c269453"));
+        assert(consensus.hashGenesisBlock == uint256S("0fa77c765afa17c13c0382e3311189b6aeb6bc3470ce11cd0f9e6d4a0eed8c9b2"));
+        assert(genesis.hashMerkleRoot == uint256S("0x7c3f6983bb482a305d69b0add97df290b4fd289a5c7e2004c2ccf2bc72b421fa"));
 
         vFixedSeeds.clear();
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
 
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.emplace_back("47.155.87.132");
-        vSeeds.emplace_back("lbdn.raptoreum.com");
+        
+        vSeeds.emplace_back("evn.enigplay.com");
 
-        // Testnet Raptoreum addresses start with 'r'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,123);
-        // Testnet Raptoreum script addresses start with '8' or '9'
+        // Testnet Enig addresses start with 'e'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,92);
+        // Testnet Enig script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
         // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Testnet Raptoreum BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet Enig BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        // Testnet Raptoreum BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet Enig BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Testnet Raptoreum BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet Enig BIP44 coin type is '1' (All coin's testnet default)
         std::string strExtCoinType = gArgs.GetArg("-extcoinindex", "");
         nExtCoinType = strExtCoinType.empty() ? 10227 : std::stoi(strExtCoinType);
 
@@ -767,8 +764,8 @@ public:
 
         consensus.nFutureRewardShare = Consensus::FutureRewardShare(0.8,0.2,0.0);
 
-        std::vector<FounderRewardStructure> rewardStructures = {  {INT_MAX, 5}  };// 5% founder/dev fee forever
-        consensus.nFounderPayment = FounderPayment(rewardStructures, 272200, "rghjACzPtVAN2wydgDbn9Jq1agREu6rH1e");
+        std::vector<FounderRewardStructure> rewardStructures = {  {INT_MAX, 10}  };// 5% founder/dev fee forever
+        consensus.nFounderPayment = FounderPayment(rewardStructures, 10, "e963BbcdHwFfFaCXdW8suuxMKi48sTLGxj");
 
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
@@ -785,18 +782,18 @@ public:
         nPoolNewMaxParticipants = 20;
         nFulfilledRequestExpireTime = 5*60; // fulfilled requests expire in 5 minutes
 
-        vSporkAddresses = {"rsqc2caFRG6myRdzKipP4PpVW9LnFaG7CH"};
+        vSporkAddresses = {"eNPJrc2pi9kpMVWDHG4WV7qykhXTUcYqgP"};
         nMinSporkKeys = 1;
         fBIP9CheckSmartnodesUpgraded = true;
 
         checkpointData = {
             {
-
+                {0, uint256S("b79e5df07278b9567ada8fc655ffbfa9d3f586dc38da3dd93053686f41caeea0")},
             }
         };
 
         chainTxData = ChainTxData{
-            1645942755, // * UNIX timestamp of last known number of transactions (Block 213054)
+            1722520602, // * UNIX timestamp of last known number of transactions (Block 213054)
             0,    // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
             0.01        // * estimated number of transactions per second after that timestamp
@@ -837,8 +834,8 @@ public:
         consensus.DIP0008Enabled = true;// DIP0008 activated immediately on devnet
        // consensus.DIP0003EnforcementHeight = 2; // DIP0003 activated immediately on devnet
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Raptoreum: 1 day
-        consensus.nPowTargetSpacing = 2 * 60; // Raptoreum: 2 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Enig: 1 day
+        consensus.nPowTargetSpacing = 2 * 60; // Enig: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nPowDGWHeight = 60;
@@ -886,20 +883,20 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        //vSeeds.push_back(CDNSSeedData("raptoreumevo.org",  "devnet-seed.raptoreumevo.org"));
+        //vSeeds.push_back(CDNSSeedData("enigplay.com",  "devnet-seed.enigplay.com"));
 
-        // Testnet Raptoreum addresses start with 'y'
+        // Testnet Enig addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
-        // Testnet Raptoreum script addresses start with '8' or '9'
+        // Testnet Enig script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
         // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Testnet Raptoreum BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet Enig BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        // Testnet Raptoreum BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet Enig BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Testnet Raptoreum BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet Enig BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         // long living quorum params
@@ -976,8 +973,8 @@ public:
         consensus.DIP0008Enabled = true;
        // consensus.DIP0003EnforcementHeight = 500;
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Raptoreum: 1 day
-        consensus.nPowTargetSpacing = 2 * 60; // Raptoreum: 2 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Enig: 1 day
+        consensus.nPowTargetSpacing = 2 * 60; // Enig: 2 minutes
         consensus.nMinimumDifficultyBlocks = 2000;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
@@ -1059,18 +1056,18 @@ public:
             0
         };
 
-        // Regtest Raptoreum addresses start with 'y'
+        // Regtest Enig addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
-        // Regtest Raptoreum script addresses start with '8' or '9'
+        // Regtest Enig script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
         // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Regtest Raptoreum BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Regtest Enig BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        // Regtest Raptoreum BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Regtest Enig BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Regtest Raptoreum BIP44 coin type is '1' (All coin's testnet default)
+        // Regtest Enig BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         // long living quorum params

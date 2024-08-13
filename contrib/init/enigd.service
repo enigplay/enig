@@ -1,0 +1,22 @@
+[Unit]
+Description=Enig's distributed currency daemon
+After=network.target
+
+[Service]
+User=enigcore
+Group=enigcore
+
+Type=forking
+PIDFile=/var/lib/enigd/enigd.pid
+ExecStart=/usr/bin/enigd -daemon -pid=/var/lib/enigd/enigd.pid \
+-conf=/etc/enigcore/enig.conf -datadir=/var/lib/enigd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

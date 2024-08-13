@@ -1,38 +1,26 @@
-Raptoreum Core Latest v1.3.17.05
+Enig Core Latest v1.8.18.24
 ===========================
 
 |CI|master|develop|
 |-|-|-|
 
-The name Raptoreum is derived from the Victorian term for a bird of prey and ium/eum place for a pertaining to in this case birds of prey. The name comes from the team’s extensive experience in the security field with top level skills covering all aspects of it. This is a unique strength in the crypto community and will leverage well into a successful project.
+Enig Play is a cutting-edge project at the intersection of gaming and blockchain technology, aiming to revolutionize the industry by integrating cryptocurrency to create an immersive and rewarding experience. Our unique platform allows gamers to truly own their in-game assets and earn real rewards through secure transactions and decentralized gameplay.
 
-Introduction
-Raptoreum began as the fairly simple idea, introducing smart contracts which would allow on chain, trustless transfers (goodbye centralized marketplaces) on the Ravencoin codebase, however with the automation of assets and RTM (Raptoreum).
-The project has quickly evolved, adding innovative features that not only further expand the asset layer, but also introduce features that could help other Blockchain projects. Ravencoin unfortunately suffered several serious breaches of its asset layer so that code base has been abandoned by us. We are currently working with and building on Raptoreum code expending its capabilities significantly.
-
-Raptoreum is now a code fork of Dash and inherits current and optionally future features such as chain locks, oracles etc. We are further expanding capabilities by adding the following features:
-A)	The deployment of a unique asset layer.
-B)	The option to lock X amount of coins or assets into a special transaction. Coins are unlocked at a block number of choice or timestamp.
-C)	Trustless on chain transfers of assets and native coins VIA Smart Contracts.
-D)	Integrating, developing and deploying a VM protocol that would allow for smart contracts in 4 major programming languages as opposed to the situation with Ethereum being limited to solidity.
-
-These additional features open up the power and ease of use of Raptoreum’s features to a greater variety of industries under the Distributed Application umbrella. DAPP's are a critical part of driving widespread adoption as recently seen with DEFI and Raptoreum hopes to help provide further alternatives and possibilities for DAPP developers particularly in the field of opening up new programming languages for DAPP and contract development.
-
-It is one of our goals to not only innovate ideas for Raptoreum but to contribute back to the general crypto community with open-source features that anybody can use to help their Blockchain projects succeed.
+Our flagship game, ShowDown, redefines competitive gaming with epic battles and unique characters, where players compete in intense tournaments, upgrade fighters, and earn $ENIG. Powered by our cryptocurrency, ENIG, the Enig Play ecosystem enables fast, secure transactions and true ownership of in-game assets, enhancing the gaming experience and unlocking exclusive rewards.
 
 
 License
 -------
 
-Raptoreum Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+Enig Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
 -------------------
 
 The `master` branch is meant to be stable. Development is done in separate branches.
-[Tags](https://github.com/raptor3um/raptoreum/tags) are created to indicate new official,
-stable release versions of Raptoreum Core.
+[Tags](https://github.com/raptor3um/enig/tags) are created to indicate new official,
+stable release versions of Enig Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 

@@ -1,0 +1,6 @@
+usr/local/bin/enig-qt usr/bin
+share/pixmaps/enig32.xpm usr/share/pixmaps
+share/pixmaps/enig16.xpm usr/share/pixmaps
+share/pixmaps/enig128.png usr/share/pixmaps
+debian/enig-qt.desktop usr/share/applications
+debian/enig-qt.protocol usr/share/kde4/services/

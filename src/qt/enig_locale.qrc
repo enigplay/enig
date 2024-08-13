@@ -1,0 +1,25 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="ar">locale/enig_ar.qm</file>
+        <file alias="bg">locale/enig_bg.qm</file>
+        <file alias="de">locale/enig_de.qm</file>
+        <file alias="en">locale/enig_en.qm</file>
+        <file alias="es">locale/enig_es.qm</file>
+        <file alias="fi">locale/enig_fi.qm</file>
+        <file alias="fr">locale/enig_fr.qm</file>
+        <file alias="it">locale/enig_it.qm</file>
+        <file alias="ja">locale/enig_ja.qm</file>
+        <file alias="ko">locale/enig_ko.qm</file>
+        <file alias="nl">locale/enig_nl.qm</file>
+        <file alias="pl">locale/enig_pl.qm</file>
+        <file alias="pt">locale/enig_pt.qm</file>
+        <file alias="ro">locale/enig_ro.qm</file>
+        <file alias="ru">locale/enig_ru.qm</file>
+        <file alias="sk">locale/enig_sk.qm</file>
+        <file alias="th">locale/enig_th.qm</file>
+        <file alias="tr">locale/enig_tr.qm</file>
+        <file alias="vi">locale/enig_vi.qm</file>
+        <file alias="zh_CN">locale/enig_zh_CN.qm</file>
+        <file alias="zh_TW">locale/enig_zh_TW.qm</file>
+    </qresource>
+</RCC>

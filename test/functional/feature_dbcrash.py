@@ -87,14 +87,14 @@ class ChainstateWriteCrashTest(BitcoinTestFramework):
                 return utxo_hash
             except:
                 # An exception here should mean the node is about to crash.
-                # If raptoreumd exits, then try again.  wait_for_node_exit()
-                # should raise an exception if raptoreumd doesn't exit.
+                # If enigd exits, then try again.  wait_for_node_exit()
+                # should raise an exception if enigd doesn't exit.
                 self.wait_for_node_exit(node_index, timeout=10)
             self.crashed_on_restart += 1
             time.sleep(1)
 
-        # If we got here, raptoreumd isn't coming back up on restart.  Could be a
-        # bug in raptoreumd, or we've gotten unlucky with our dbcrash ratio --
+        # If we got here, enigd isn't coming back up on restart.  Could be a
+        # bug in enigd, or we've gotten unlucky with our dbcrash ratio --
         # perhaps we generated a test case that blew up our cache?
         # TODO: If this happens a lot, we should try to restart without -dbcrashratio
         # and make sure that recovery happens.
