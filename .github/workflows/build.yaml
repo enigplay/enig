@@ -1,4 +1,4 @@
-name: Raptoreum Build
+name: Enig Build
 on:
   push:
     branches:
@@ -13,10 +13,10 @@ on:
   workflow_dispatch:
 
 env:
-  COIN_NAME: raptoreum
-  BUILD_DIR: raptoreum-build
-  COMPRESS_DIR: raptoreum-compress
-  TEST_DIR: raptoreum-test
+  COIN_NAME: enig
+  BUILD_DIR: enig-build
+  COMPRESS_DIR: enig-compress
+  TEST_DIR: enig-test
 
 jobs:
   get-version:
@@ -90,9 +90,9 @@ jobs:
         run: |
           make -j$(nproc)
           mkdir -p ${BUILD_DIR} ${BUILD_DIR}_not_strip ${TEST_DIR}
-          cp src/{raptoreum-cli,raptoreum-tx,raptoreumd,qt/raptoreum-qt} ${BUILD_DIR}/
-          mv src/{raptoreum-cli,raptoreum-tx,raptoreumd,qt/raptoreum-qt} ${BUILD_DIR}_not_strip/
-          mv src/test/test_raptoreum ${TEST_DIR}
+          cp src/{enig-cli,enig-tx,enigd,qt/enig-qt} ${BUILD_DIR}/
+          mv src/{enig-cli,enig-tx,enigd,qt/enig-qt} ${BUILD_DIR}_not_strip/
+          mv src/test/test_enig ${TEST_DIR}
           strip ${BUILD_DIR}/*
 
       - name: Build Debug Binaries
@@ -103,7 +103,7 @@ jobs:
           ./configure --prefix=`pwd`/depends/x86_64-pc-linux-gnu --disable-tests --enable-debug
           make -j$(nproc)
           mkdir -p ${BUILD_DIR}_debug
-          mv src/{raptoreum-cli,raptoreum-tx,raptoreumd,qt/raptoreum-qt} ${BUILD_DIR}_debug/
+          mv src/{enig-cli,enig-tx,enigd,qt/enig-qt} ${BUILD_DIR}_debug/
 
       - name: Generate Checksum and Compress
         run: |
@@ -176,8 +176,8 @@ jobs:
       - name: Run Unit Tests
         id: Tests
         run: |
-           chmod +x test_raptoreum
-           ./test_raptoreum --log_format=JUNIT > unit_test_results.xml
+           chmod +x test_enig
+           ./test_enig --log_format=JUNIT > unit_test_results.xml
 
       - name: Upload Test Artifacts
         uses: actions/upload-artifact@v3
@@ -225,9 +225,9 @@ jobs:
         run: |
           make -j$(nproc)
           mkdir -p ${BUILD_DIR} ${BUILD_DIR}_not_strip ${TEST_DIR}
-          cp src/{raptoreum-cli,raptoreum-tx,raptoreumd,qt/raptoreum-qt} ${BUILD_DIR}/
-          mv src/{raptoreum-cli,raptoreum-tx,raptoreumd,qt/raptoreum-qt} ${BUILD_DIR}_not_strip/
-          mv src/test/test_raptoreum ${TEST_DIR}
+          cp src/{enig-cli,enig-tx,enigd,qt/enig-qt} ${BUILD_DIR}/
+          mv src/{enig-cli,enig-tx,enigd,qt/enig-qt} ${BUILD_DIR}_not_strip/
+          mv src/test/test_enig ${TEST_DIR}
           strip ${BUILD_DIR}/*
 
       - name: Build Debug Binaries
@@ -238,7 +238,7 @@ jobs:
           ./configure --prefix=`pwd`/depends/x86_64-pc-linux-gnu --disable-tests --enable-debug
           make -j$(nproc)
           mkdir -p ${BUILD_DIR}_debug
-          mv src/{raptoreum-cli,raptoreum-tx,raptoreumd,qt/raptoreum-qt} ${BUILD_DIR}_debug/
+          mv src/{enig-cli,enig-tx,enigd,qt/enig-qt} ${BUILD_DIR}_debug/
 
       - name: Generate Checksum and Compress
         run: |
@@ -311,8 +311,8 @@ jobs:
       - name: Run Unit Tests
         id: Tests
         run: |
-          chmod +x test_raptoreum
-          ./test_raptoreum --log_format=JUNIT > unit_test_results.xml
+          chmod +x test_enig
+          ./test_enig --log_format=JUNIT > unit_test_results.xml
 
       - name: Upload Test Artifacts
         uses: actions/upload-artifact@v3
@@ -360,9 +360,9 @@ jobs:
         run: |
           make -j8
           mkdir -p ${BUILD_DIR} ${BUILD_DIR}_not_strip ${TEST_DIR}
-          cp src/{raptoreum-cli,raptoreum-tx,raptoreumd,qt/raptoreum-qt} ${BUILD_DIR}/
-          mv src/{raptoreum-cli,raptoreum-tx,raptoreumd,qt/raptoreum-qt} ${BUILD_DIR}_not_strip/
-          mv src/test/test_raptoreum ${TEST_DIR}
+          cp src/{enig-cli,enig-tx,enigd,qt/enig-qt} ${BUILD_DIR}/
+          mv src/{enig-cli,enig-tx,enigd,qt/enig-qt} ${BUILD_DIR}_not_strip/
+          mv src/test/test_enig ${TEST_DIR}
           strip ${BUILD_DIR}/*
 
       - name: Generate Checksum and Compress
@@ -414,10 +414,10 @@ jobs:
         run: |
           make deploy
           mkdir -p macos-dmg
-          mv Raptoreum-Qt.dmg macos-dmg/
+          mv Enig-Qt.dmg macos-dmg/
           cd macos-dmg
-          echo "sha256: `shasum Raptoreum-Qt.dmg`" >> checksums.txt
-          echo "openssl-sha256: `openssl sha256 Raptoreum-Qt.dmg`" >> checksums.txt
+          echo "sha256: `shasum Enig-Qt.dmg`" >> checksums.txt
+          echo "openssl-sha256: `openssl sha256 Enig-Qt.dmg`" >> checksums.txt
           cd ..
 
       - name: Upload dmg file
@@ -440,8 +440,8 @@ jobs:
       - name: Run Unit Tests
         id: Tests
         run: |
-          chmod +x test_raptoreum
-          ./test_raptoreum --log_format=JUNIT > unit_test_results.xml
+          chmod +x test_enig
+          ./test_enig --log_format=JUNIT > unit_test_results.xml
 
       - name: Upload Test Artifacts
         uses: actions/upload-artifact@v3
@@ -488,8 +488,8 @@ jobs:
   #       run: |
   #         make -j$(nproc)
   #         mkdir -p ${BUILD_DIR} ${TEST_DIR}
-  #         mv src/{raptoreum-cli,raptoreum-tx,raptoreumd,qt/raptoreum-qt} ${BUILD_DIR}/
-  #         mv src/test/test_raptoreum ${TEST_DIR}
+  #         mv src/{enig-cli,enig-tx,enigd,qt/enig-qt} ${BUILD_DIR}/
+  #         mv src/test/test_enig ${TEST_DIR}
 
   #     - name: Build Debug Binaries
   #       run: |
@@ -499,7 +499,7 @@ jobs:
   #         ./configure --prefix=`pwd`/depends/arm-linux-gnueabihf --disable-tests --enable-debug
   #         make -j$(nproc)
   #         mkdir -p ${BUILD_DIR}_debug
-  #         mv src/{raptoreum-cli,raptoreum-tx,raptoreumd,qt/raptoreum-qt} ${BUILD_DIR}_debug/
+  #         mv src/{enig-cli,enig-tx,enigd,qt/enig-qt} ${BUILD_DIR}_debug/
 
   #     - name: Generate Checksum and Compress
   #       run: |
@@ -568,8 +568,8 @@ jobs:
   #         copy_artifact_path: unit_test_results.xml
   #         copy_artifacts_on_fail: yes
   #         commands: |
-  #           chmod +x test_raptoreum
-  #           ./test_raptoreum --log_format=JUNIT > unit_test_results.xml
+  #           chmod +x test_enig
+  #           ./test_enig --log_format=JUNIT > unit_test_results.xml
 
   #     - name: Upload Test Artifacts
   #       uses: actions/upload-artifact@v3
@@ -616,8 +616,8 @@ jobs:
         run: |
           make -j$(nproc)
           mkdir -p ${BUILD_DIR} ${TEST_DIR}
-          mv src/{raptoreum-cli,raptoreum-tx,raptoreumd,qt/raptoreum-qt} ${BUILD_DIR}/
-          mv src/test/test_raptoreum ${TEST_DIR}/
+          mv src/{enig-cli,enig-tx,enigd,qt/enig-qt} ${BUILD_DIR}/
+          mv src/test/test_enig ${TEST_DIR}/
 
       - name: Build Debug Binaries
         run: |
@@ -627,7 +627,7 @@ jobs:
           ./configure --prefix=`pwd`/depends/aarch64-linux-gnu --disable-tests --enable-debug
           make -j$(nproc)
           mkdir -p ${BUILD_DIR}_debug
-          mv src/{raptoreum-cli,raptoreum-tx,raptoreumd,qt/raptoreum-qt} ${BUILD_DIR}_debug/
+          mv src/{enig-cli,enig-tx,enigd,qt/enig-qt} ${BUILD_DIR}_debug/
 
       - name: Generate Checksum and Compress
         run: |
@@ -695,8 +695,8 @@ jobs:
           copy_artifact_path: unit_test_results.xml
           copy_artifacts_on_fail: yes
           commands: |
-             chmod +x test_raptoreum
-             ./test_raptoreum --log_format=JUNIT > unit_test_results.xml
+             chmod +x test_enig
+             ./test_enig --log_format=JUNIT > unit_test_results.xml
 
       - name: Upload Test Artifacts
         uses: actions/upload-artifact@v3
@@ -747,9 +747,9 @@ jobs:
         run: |
           make -j$(nproc)
           mkdir -p ${BUILD_DIR} ${BUILD_DIR}_not_strip ${TEST_DIR}
-          cp src/{raptoreum-cli.exe,raptoreum-tx.exe,raptoreumd.exe,qt/raptoreum-qt.exe} ${BUILD_DIR}/
-          mv src/{raptoreum-cli.exe,raptoreum-tx.exe,raptoreumd.exe,qt/raptoreum-qt.exe} ${BUILD_DIR}_not_strip/
-          mv src/test/test_raptoreum.exe ${TEST_DIR}
+          cp src/{enig-cli.exe,enig-tx.exe,enigd.exe,qt/enig-qt.exe} ${BUILD_DIR}/
+          mv src/{enig-cli.exe,enig-tx.exe,enigd.exe,qt/enig-qt.exe} ${BUILD_DIR}_not_strip/
+          mv src/test/test_enig.exe ${TEST_DIR}
           strip ${BUILD_DIR}/*
 
       - name: Generate Checksum and Compress
@@ -834,7 +834,7 @@ jobs:
         run: |
           pwd
           dir
-          .\test_raptoreum.exe --log_format=JUNIT > unit_test_results.xml
+          .\test_enig.exe --log_format=JUNIT > unit_test_results.xml
 
       - name: Upload Test Artifacts
         uses: actions/upload-artifact@v3
