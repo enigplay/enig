@@ -24,7 +24,7 @@ static const CAmount CENT = 1000000;
  * for the creation of coins out of thin air modification could lead to a fork.
  * */
 static const CAmount MAX_MONEY = 21000000000 * COIN;
-static const CAmount OLD_MAX_MONEY = 21000000 * COIN;
+static const CAmount OLD_MAX_MONEY = 2100000000 * COIN;
 inline bool MoneyRange(const CAmount& nValue, bool nV17active = true) {
     if(nV17active){
         return (nValue >= 0 && nValue <= MAX_MONEY);
